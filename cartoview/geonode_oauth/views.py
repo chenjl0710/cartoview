@@ -6,7 +6,7 @@ from allauth.socialaccount.providers.oauth2.views import (OAuth2Adapter,
 from django.conf import settings
 # Create your views here.
 from django.views.generic.base import TemplateView
-
+from django.http import HttpResponse
 from .provider import GeonodeProvider
 
 
@@ -34,6 +34,12 @@ class GenodeAdapter(OAuth2Adapter):
             "email": extra_data["email"],
         }
         return self.get_provider().sociallogin_from_response(request, reformatted_data)
+
+
+def test_oauth(request):
+    print(request.body)
+    print(request.GET)
+    return HttpResponse(request.body)
 
 
 oauth2_login = OAuth2LoginView.adapter_view(GenodeAdapter)

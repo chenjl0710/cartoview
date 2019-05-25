@@ -24,6 +24,7 @@ from rest_framework_simplejwt import views as jwt_views
 
 urlpatterns = [
     re_path(r"^accounts/profile$", geonode_oauth_views.ProfileView.as_view()),
+    re_path(r"^accounts/test_geonode_provider$", geonode_oauth_views.test_oauth),
     re_path(r"^documents/", include('wagtail.documents.urls')),
     re_path(r"^apps/", include('cartoview.app_manager.urls')),
     re_path(r"^maps/", include('cartoview.maps.urls')),
