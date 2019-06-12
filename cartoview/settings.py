@@ -14,6 +14,7 @@ from kombu import Exchange, Queue
 import cartoview
 from geonode.settings import *  # noqa
 
+PROJECT_NAME = 'cartoview'
 CARTOVIEW_INSTALLED_APPS = ("cartoview",
                             "cartoview.cartoview_api.apps.CartoviewAPIConfig",
                             "cartoview.store_api.apps.StoreApiConfig",
@@ -21,7 +22,7 @@ CARTOVIEW_INSTALLED_APPS = ("cartoview",
                             "cartoview.site_management",
                             "cartoview.apps_handler.apps.AppsHandlerConfig")
 INSTALLED_APPS += CARTOVIEW_INSTALLED_APPS
-ROOT_URLCONF = "cartoview.urls"
+ROOT_URLCONF = "{}.urls".format(PROJECT_NAME)
 CARTOVIEW_DIR = os.path.abspath(os.path.dirname(cartoview.__file__))
 BASE_DIR = os.path.dirname(CARTOVIEW_DIR)
 CARTOVIEW_TEMPLATE_DIRS = [
